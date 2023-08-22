@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N6M7RBT');
+    </script>
+    <style>
+       .ifrm{
+          display:flex;
+          justify-content:center;
+          margin:20px 0;
+       }
+        .btn{
+           text-align:center;      
+        }
+    </style>        
+</head>
+<body>
+    <div class="ifrm"> <iframe width="930" height="523" src="https://www.youtube.com/embed/UaukXy49af8" ></iframe></div>
+    <div class="btn">
+        <button type="button" onclick="deleteCookie()">Delete Cookies</button>
+        <button type="button" onclick="retrieveCookie()">Retrieve Cookies</button>
+    </div> 
+    <script>
+        function deleteCookie ()
+        {   // to get cookie           
+            let cookie= document.cookie;
+            alert(`Cookies\n ${cookie}`);
+            //set cookie
+            localStorage.setItem('deleteCookie',cookie);
+
+            //to delete cookie
+            cookies=cookie.split(';')
+            console.log(cookies);
+            for(let i=0; i<cookies.length; i++)
+            {
+                // console.log(cookies[i])
+                cookieKeyValue=cookies[i].split('=');
+                console.log(cookieKeyValue)
+                let cookieName = cookieKeyValue[0];                             
+                document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';  
+            }
+            alert('cookie deleted') 
+        }
+        function retrieveCookie(){
+            // alert("retrievCookie")
+            let deletedcookie = localStorage.getItem('deleteCookie');
+            if(deletedcookie){
+            alert("Deleted Cookies Retrieve")
+            alert(`Cookies\n ${deletedcookie}`); 
+            }else{
+              alert(`First Delete Cookies`)
+            }         
+        }        
+    </script>
+</body>
+</html>

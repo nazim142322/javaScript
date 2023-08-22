@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cookie Management</title>
+</head>
+<body>
+    <iframe width="930" height="523" src="https://www.youtube.com/embed/UaukXy49af8"></iframe>
+    <button id="deleteBtn">Delete</button>
+    <button id="retrieveBtn">Retrieve</button>
+
+    <script>
+        // Embed script
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N6M7RBT');
+
+        // Button event handlers
+        document.getElementById('deleteBtn').addEventListener('click', function() {
+            // Store cookies data in local storage
+            var cookiesData = document.cookie;
+            localStorage.setItem('deletedCookies', cookiesData);
+
+            // Delete cookies
+            var cookies = document.cookie.split('; ');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookieParts = cookies[i].split('=');
+                var cookieName = cookieParts[0];
+                document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            }
+        });
+
+        document.getElementById('retrieveBtn').addEventListener('click', function() {
+            // Retrieve and display deleted cookies from local storage
+            var deletedCookies = localStorage.getItem('deletedCookies');
+            if (deletedCookies) {
+                alert('Deleted Cookies:\n' + deletedCookies);
+            } else {
+                alert('No deleted cookies found.');
+            }
+        });
+    </script>
+</body>
+</html>

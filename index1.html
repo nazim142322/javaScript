@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cookie Management</title>
+</head>
+<body>
+    <iframe width="930" height="523" src="https://www.youtube.com/embed/UaukXy49af8"></iframe>
+ 
+
+    <button id="deleteButton">Delete</button>
+    <button id="retrieveButton">Retrieve</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const deleteButton = document.getElementById("deleteButton");
+            const retrieveButton = document.getElementById("retrieveButton");
+
+            // Event listener for the Delete button
+            deleteButton.addEventListener("click", function() {
+                // Store existing cookies in local storage
+                const cookies = document.cookie;
+                localStorage.setItem("deletedCookies", cookies);
+                
+                // Delete all cookies
+                const allCookies = document.cookie.split("; ");
+                for (const cookie of allCookies) {
+                    const [name, _] = cookie.split("=");
+                    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                }
+
+                alert("All cookies deleted and stored in local storage.");
+            });
+
+            // Event listener for the Retrieve button
+            retrieveButton.addEventListener("click", function() {
+                // Retrieve deleted cookies from local storage
+                const deletedCookies = localStorage.getItem("deletedCookies");
+
+                if (deletedCookies) {
+                    // Set the retrieved cookies
+                    const cookiesArray = deletedCookies.split("; ");
+                    for (const cookie of cookiesArray) {
+                        document.cookie = cookie;
+                    }
+                    alert("Retrieved deleted cookies from local storage.");
+                } else {
+                    alert("No deleted cookies found in local storage.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
