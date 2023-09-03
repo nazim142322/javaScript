@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>even odd no</title>
+</head>
+<body>
+    <input type="number" id="inpt"/>
+    <button onclick="myfun()">click me</button>
+    <script>
+        function myfun(){
+            let x = document.getElementById('inpt').value             
+
+            if(x%2==0){
+            alert("number is even")
+            document.getElementById('inpt').value="";
+            }
+            else{
+                alert("number is odd");
+                document.getElementById('inpt').value='';
+            }
+        }
+    </script>
+</body>
+</html>
