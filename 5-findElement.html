@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find element</title>
+</head>
+<body>
+    <script>
+
+        let arr=[12,10,160,18];       
+        let c = arr.indexOf(10);
+        if(c!==-1){
+            alert(`number 10 is present at the index ${c}`)//returns index of element if present
+        }
+        else{
+            alert(`number is not present`);//return -1 if not present
+        }
+
+        let sub =["Hindi",'English','Punjabi'];
+        let en = sub.indexOf('English');
+        if(en!==-1){
+            alert(`English subject is present at index ${en}`)
+        }
+        else{
+            alert(`English subject is not present`)
+        }
+        
+
+        let isPresent= sub.includes('Hindi');
+        if(isPresent){
+          console.log(`element is present`)
+        }
+        else{
+            console.log(`element is not present`)
+        } 
+    </script>
+</body>
+</html>

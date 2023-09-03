@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>      
+
+var a = 10;
+var b = 20;
+var c = 30;
+var d = 10;
+
+function hasDuplicates(...args) {
+    // Create an empty object to keep track of seen elements
+    let seen = {};
+    console.log(`first seen  obj ${seen}`)
+
+    for (var i = 0; i < args.length; i++) {
+        var element = args[i];
+     
+
+        // If the element is already in the "seen" object, it's a duplicate
+        if (seen[element]) {
+            return true;
+        }
+
+        // Mark the element as seen
+        seen[element] = true;
+    }
+
+    // No duplicates found
+    return false;
+}
+
+if (hasDuplicates(a, b, c, d)) {
+    console.log("There are duplicate numbers among a, b, c, and d.");
+} else {
+    console.log("There are no duplicate numbers among a, b, c, and d.");
+}     
+</script>
+</body>
+</html>
